@@ -1,16 +1,15 @@
-import { ModeToggle } from "./components/ModeToggle";
-import { Button } from "./components/ui/button";
+import { ThemeProvider } from "@/components/theme-provider";
+import { RouterProvider } from "react-router-dom";
+import { router } from "@/router";
 
 function App() {
     return (
-        <>
-            <div className="bg-background text-foreground min-h-screen p-6">
-                <div className="flex items-center justify-end">
-                    <ModeToggle />
-                </div>
-                <Button variant="outline">Outline</Button>
-            </div>
-        </>
+        <ThemeProvider
+            defaultTheme="system"
+            storageKey="vite-ui-theme"
+        >
+            <RouterProvider router={router} />
+        </ThemeProvider>
     );
 }
 
