@@ -2,7 +2,11 @@ import { isRouteErrorResponse, useRouteError, Link } from "react-router-dom";
 
 export default function ErrorPage() {
     const err = useRouteError();
-    const message = isRouteErrorResponse(err) ? `${err.status} ${err.statusText}` : err?.message || "đã xảy ra lỗi";
+    const message = isRouteErrorResponse(err)
+        ? `${err.status} ${err.statusText}`
+        : err instanceof Error
+          ? err.message
+          : "đã xảy ra lỗi";
 
     return (
         <div className="space-y-3 p-6">
